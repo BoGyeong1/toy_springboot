@@ -7,8 +7,8 @@
     SELECT * 
     FROM USERS
     <if test="pageScale != null">
-    ORDER BY USER_ID
-    LIMIT #{currentPage}, #{pageScale} 
+    ORDER BY EMAIL
+    LIMIT #{pageBegin}, #{pageScale} 
     </if> 
     </select>
 
