@@ -2,11 +2,14 @@ package com.study.toy_springboot.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.study.toy_springboot.dao.UserListDao;
+import com.study.toy_springboot.utils.Paginations;
 
 @Service
 public class UserListService {
@@ -70,6 +73,23 @@ public class UserListService {
         result = this.getList(dataMap);
         return result;
 
+    }
+
+    public Object getTotal(Object dataMap) {
+        String sqlMapId = "UserList.selectTotal";
+        Object result = userListDao.getOne(sqlMapId, dataMap);
+        return result;
+    }
+
+    public Object getListWithPagination(Object dataMap) {
+        Map<String, Object> result = new HashMap<String, Object>();
+        int totalCount = (int) this.getTotal(dataMap);
+        int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
+        Paginations paginations = new Paginations(totalCount, currentPage);
+        result.put("paginations", paginations);
+        ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
+        result.put("resultList", this.getList(dataMap));
+        return result;
     }
 
 }

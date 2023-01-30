@@ -14,7 +14,7 @@
         </ul>
 
         <div class="col-md-3 text-end">
-                    <a href="/userlist" class="btn btn-outline-light me-2">User List</a>
+                    <a href="/listPagination/1" class="btn btn-outline-light me-2">User List</a>
                     <a href="/signup" class="btn btn-light">Sign Up</a>
         </div>
     </header>

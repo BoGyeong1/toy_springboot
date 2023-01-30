@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.study.toy_springboot.service.CommonCodeService;
 import com.study.toy_springboot.utils.CommonUtils;
 
-@Controller
+// @Controller
 public class CommonCodeController {
 
     @Autowired
