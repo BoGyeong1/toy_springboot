@@ -56,7 +56,7 @@ public class MainController {
     public ModelAndView userList(@RequestParam Map<String, Object> params, ModelAndView modelAndView) {
         Object resultMap = userListService.getList(params);
         modelAndView.addObject("resultMap", resultMap);
-        modelAndView.setViewName("userlist");
+        modelAndView.setViewName("/listPagination/1");
         return modelAndView;
     }
 
@@ -64,7 +64,7 @@ public class MainController {
     public ModelAndView update(@RequestParam Map<String, Object> params, ModelAndView modelAndView) {
         Object resultMap = userListService.updateAndGetList(params);
         modelAndView.addObject("resultMap", resultMap);
-        modelAndView.setViewName("userlist");
+        modelAndView.setViewName("/listPagination/1");
         return modelAndView;
 
     }
@@ -75,7 +75,7 @@ public class MainController {
         params.put("USER_ID", userId);
         Object resultMap = userListService.insertAndGetList(params);
         modelAndView.addObject("resultMap", resultMap);
-        modelAndView.setViewName("userlist");
+        modelAndView.setViewName("/listPagination/1");
         return modelAndView;
     }
 
@@ -85,7 +85,7 @@ public class MainController {
         params.put("USER_ID", userId);
         Object resultMap = userListService.deleteAndGetList(params);
         modelAndView.addObject("resultMap", resultMap);
-        modelAndView.setViewName("userlist");
+        modelAndView.setViewName("/listPagination/1");
         return modelAndView;
 
     }
