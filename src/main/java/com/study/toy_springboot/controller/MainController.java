@@ -1,8 +1,12 @@
 package com.study.toy_springboot.controller;
 
+import java.util.Collection;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +24,21 @@ public class MainController {
 
     @RequestMapping(value = { "/main", "/", "" }, method = RequestMethod.GET)
     public ModelAndView main(ModelAndView modelAndView) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            String username = ((UserDetails) principal).getUsername();
+            String password = ((UserDetails) principal).getPassword();
+
+            System.out.println("Username : " + username);
+            System.out.println("Password : " + password);
+            System.out.println(((UserDetails) principal).getAuthorities());
+            System.out.println(((UserDetails) principal).isAccountNonExpired());
+            System.out.println(((UserDetails) principal).isCredentialsNonExpired());
+            System.out.println(((UserDetails) principal).isEnabled());
+        } else {
+            String username = principal.toString();
+        }
         modelAndView.setViewName("main");
         return modelAndView;
     }
