@@ -39,7 +39,7 @@ public class MainController {
         } else {
             String username = principal.toString();
         }
-        modelAndView.setViewName("main");
+        modelAndView.setViewName("main1");
         return modelAndView;
     }
 
