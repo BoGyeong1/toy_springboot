@@ -13,7 +13,7 @@ public class SecurityConfiguration {
 
         httpSecurity.csrf().disable();
         httpSecurity.authorizeRequests()
-                .antMatchers("/user").authenticated()
+                .antMatchers("/user/*").authenticated()
                 .antMatchers("/manager/*").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
                 .antMatchers("/admin/*").access("hasRole('ROLE_ADMIN')")
                 .anyRequest().permitAll();
